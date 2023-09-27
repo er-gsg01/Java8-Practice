@@ -1,0 +1,623 @@
+have you used cutomized exception in your application.?
+Ans:-  yes 
+============================================
+Q:- How deafult exception handling works.?
+Ans:-
+
+1. If an exception raised inside any method then that method is responsible to
+create Exception object with the following information.
+1. Name of the exception.
+2. Description of the exception.
+3. Location of the exception.(StackTrace)
+2. After creating that Exception object, the method handovers that object to the
+JVM.
+3. JVM checks whether the method contains any exception handling code or not. If
+method won't contain any handling code then JVM terminates that method
+abnormally and removes corresponding entry form the stack.
+4. JVM identifies the caller method and checks whether the caller method contain
+any handling code or not. If the caller method also does not contain handling
+code then JVM terminates that caller method also abnormally and removes
+corresponding entry from the stack.
+5. This process will be continued until main() method and if the main() method also
+doesn't contain any exception handling code then JVM terminates main()
+method also and removes corresponding entry from the stack.
+6. Then JVM handovers the responsibility of exception handling to the default
+exception handler.
+7. Default exception handler just print exception information to the console in the
+following format and terminates the program abnormally.
+Exception in thread “xxx(main)” Name of exception: description
+Location of exception (stack trace)
+Example:
+class Test
+{
+public static void main(String[] args){
+doStuff();
+}
+public static void doStuff(){
+doMoreStuff();
+}
+public static void doMoreStuff(){
+System.out.println(10/0);
+}}
+Output:
+Exception in thread "main" java.lang.ArithmeticException: / by zero
+atTest.doMoreStuff(Test.java:10)
+atTest.doStuff(Test.java:7)
+atTest.main(Test.java:4)
+=======================================================================
+how we can achieve Customized exception handling works.?
+ It is highly recommended to handle exceptions.
+ In our program the code which may raise exception is called risky code, we have
+to place risky code inside try block and the corresponding handling code inside
+catch block.
+Example:
+try
+{
+Risky code
+}
+catch(Exception e)
+{
+Handling code
+}
+=============================================================
+what is checkd and unchecked exception.?
+Ans:-
+      Checked Vs Unchecked Exceptions:
+	  ----------------------------------
+ The exceptions which are checked by the compiler whether programmer
+handling or not, for smooth execution of the program at runtime, are called
+checked exceptions.
+1. HallTicketMissingException
+2. PenNotWorkingException
+3. FileNotFoundException
+ The exceptions which are not checked by the compiler whether programmer
+handing or not ,are called unchecked exceptions.
+1. BombBlastException
+2. ArithmeticException
+3. NullPointerException
+Note:RuntimeException and its child classes, Error and its child classes are unchecked
+and all the remaining are considered as checked exceptions.
+Note: Whether exception is checked or unchecked compulsory it should occurs at
+runtime only and there is no chance of occurring any exception at compile time.
+============================================================================================
+Q:- what full vs partially checked exception.?
+Ans:- Fully checked VsPartially checked :
+A checked exception is said to be fully checked if and only if all its child classes are also
+checked.
+Example:
+1) IOException
+2) InterruptedException
+A checked exception is said to be partially checked if and only if some of its child classes
+are unchecked.
+Example:
+Exception
+Note :The only possible partially checked exceptions in java are:
+1. Throwable.
+2. Exception.
+================================================================================
+why we use exception handling.? how do you do exception handling./
+Ans:- Exception handling doesn't mean repairing an exception. We have to define alternative
+way to continue rest of the program normally. This way of defining alternative is
+nothing but exception handling.
+Example: Suppose our programming requirement is to read data from remote file
+locating at London. At runtime if London file is not available then our program should
+not be terminated abnormally.
+We have to provide a local file to continue rest of the program normally. This way of
+defining alternative is nothing but exception handling.
+============================================================================================
+what is finally block if we put return statement in try.? can execute finally block. and if we put in catch block then.
+Ans:- Even though return statement present in try or catch blocks first finally will be executed
+and after that only return statement will be considered. i.efinally block dominates
+return statement.
+Example:
+class Test
+{
+public static void main(String[] args)
+{
+try
+{
+System.out.println("try block executed");
+return;
+}
+catch(ArithmeticException e)
+{
+System.out.println("catch block executed");
+}
+finally
+{
+System.out.println("finally block executed");
+}
+}}
+Output:
+try block executed
+Finally block executed
+==================================================
+can we create/throw run time exception and catch.?
+Ans:-Yes , you can catch RuntimeException...But i think its not a good approach, if you catch it you should properly manage it.
+ Otherwise the result is out of your hand. Best way is to leave it to JVM . JVM will handle it.
+=======================================================
+Q;- Diff between throw and throws keyword.?
+Ans:-   Read from Pdf Notes.
+
+===========================================
+what is we have return statement all three i.e try catch finally.
+Ans:-If return statement present try, catch and finally blocks then finally block return
+statement will be considered.
+Example:
+class Test
+{
+public static void main(String[] args)
+{
+System.out.println(m1());
+}
+public static intm1(){
+try
+{
+System.out.println(10/0);
+return 777;
+}
+catch(ArithmeticException e)
+{
+return 888;
+}
+finally{
+return 999;
+}
+}}
+Output:
+999
+===================================================
+Q:- system.exit(0) finally block will not execute.
+Ans:- 
+      There is only one situation where the finally block won't be executed is whenever we are
+using System.exit(0) method.
+When ever we are using System.exit(0) then JVM itself will be shutdown , in this case
+finally block won't be executed.
+i.e., System.exit(0) dominates finally block.
+Example:
+class Test
+{
+public static void main(String[] args)
+{
+try
+{
+System.out.println("try");
+System.exit(0);
+}
+catch(ArithmeticException e)
+{
+System.out.println("catch block executed");
+}
+finally
+{
+System.out.println("finally block executed");
+}
+}}
+Output:
+try
+Note :
+1. This argument acts as status code. Insteadof zero, we can take any integer value
+2. zero means normal termination , non-zero means abnormal termination
+3. This status code internally used by JVM, whether it is zero or non-zero there is no
+change in the result and effect is same wrt program.
+=====================================================
+what is super class of exception.?
+ans:- Throwable
+=======================================
+
+diff b/w classnotfoundexception and NoClassdefFoundError.
+Ans:-  Difference between ClassNotFoundException & NoClassDefFoundError :-
+
+1. For hard coded class names at Runtime in the corresponding .class files not
+available we will get NoClassDefFoundError , which is unchecked
+Test t = new Test( );
+In Runtime Test.class file is not available then we will get
+NoClassDefFoundError
+2. For Dynamically provided class names at Runtime , If the corresponding .class
+files is not available then we will get the RuntimeException saying
+ClassNotFoundException
+Ex : Object o=Class.forname("Test").newInstance( );
+At Runtime if Test.class file not available then we will get the
+ClassNotFoundException , which is checked exception
+==================================================================
+what is exception occur in fuinally block.
+ans:-if it's not handled by the user then the program will terminate abnormally.
+================================================================
+if system.exit() written in try block then what will happened to finally block.?
+Ans:- error: method exit in class System cannot be applied to given types;
+            System.exit();
+                  ^
+  required: int
+  found: no arguments
+  
+  Note : we need to pass argument 0 or and int in exit().
+==========================================
+Runtime and compile time exception.?
+===================================
+Ans:- the exception which occur at run time of program that is called run time exception. 
+       exaples :- Artithmetic, null pointer exception.
+	   the exception whihc occur at compile time that is compile time exception.  example fileNotfound exception.
+==========================================================
+exception vs error.
+Ans;- Exception:
+Most of the cases exceptions are caused by our program and these are recoverable.
+Ex : If FileNotFoundException occurs then we can use local file and we can continue
+rest of the program execution normally.
+Error:
+Most of the cases errors are not caused by our program these are due to lack of system
+resources and these are non-recoverable.
+Ex :IfOutOfMemoryError occurs being a programmer we can't do anything the
+program will be terminated abnormally.System Admin or Server Admin is responsible
+to raise/increase heap memory.
+========================
+where to try block inside  for loop or outside.?
+ans:-  Exceptions are expensive - if you put the exception logic within a loop you risk having exceptions
+ being thrown for every iteration in the loop. This can easily cause performance issues.
+If you put the try/catch block outside of the loop, you will only need to handle a single exception.
+Technically, if all the iterations of your loop are "equal", and the loop should stop as soon as an exception occurs,
+ then it's better to put the try... catch block outside of the loop. 
+====================================================================================
+exception handling in jsp.?
+Ans:- Exception handling in JSP
+Java Server Pages declares 9 implicit objects, the exception object being one of them. It is an object of 
+java.lang.Throwable class, and is used to print exceptions. However, it can only be used in error pages.
+
+There are two ways of handling exceptions in JSP. They are:---
+By errorPage and isErrorPage attributes of page directive
+By <error-page> element in web.xml file
+Handling Exception using page directive attributes
+
+The page directive in JSP provides two attributes to be used in exception handling. They’re:
+errorPage: Used to site which page to be displayed when exception occured.
+Syntax :
+
+ <%@page errorPage="url of the error page"%>
+isErrorPage : Used to mark a page as an error page where exceptions are displayed.
+Syntax :
+ <%@page isErrorPage="true"%>
+In order to handle exceptions using the aforementioned page directives, it is important to have a jsp page to execute the normal code, which is prone to exceptions. Also, a separate error page is to be created, which will display the exception. In case the exception occurs on the page with the exception prone code, the control will be navigated to the error page which will display the exception.
+
+The following is an example illustrating exception handling using page directives:
+
+index.html
+=============
+filter_none
+brightness_4
+<html> 
+<head> 
+<body> 
+<form action="a.jsp">   
+Number1:<input type="text" name="first" > 
+Number2:<input type="text" name="second" >  
+<input type="submit" value="divide">   
+</form>   
+</body> 
+</html> 
+
+A.jsp
+========
+filter_none
+brightness_4
+// JSP code to divide two numbers 
+<% @page errorPage = "error.jsp" %> < % 
+  
+                                          String num1 
+    = request.getParameter("first"); 
+String num2 = request.getParameter("second"); 
+  
+// extracting numbers from request 
+int x = Integer.parseInt(num1); 
+int y = Integer.parseInt(num2); 
+int z = x / y; // dividing the numbers 
+out.print("division of numbers is: " + z); // result 
+  
+% > 
+
+error.jsp
+===========
+filter_none
+brightness_4
+// JSP code for error page, which displays the exception 
+<% @page isErrorPage = "true" %> 
+  
+    <h1> Exception caught</ h1> 
+  
+        The exception is : <%= exception %> // displaying the exception 
+=====================================================================================		
+what will be happedn if there exception in any of interceptor.
+===================================================
+how to printstacktrace of custom exception.?
+ans:-  Various methods to print exception information:
+Throwable class defines the following methods to print exception information to the
+console.
+printStackTrace():
+This method prints exception information in the following format.
+Name of the exception: description of exception
+Stack trace
+toString(): This method prints exception information in the following format.
+Name of the exception: description of exception
+getMessage(): This method returns only description of the exception.
+Description.
+=============================================================
+how to avoid cuncurrent modification exception.?
+==========================================================
+super class of unchecked exception and runtime exception.?
+Ans:-   Thowable
+===================================================
+try catch finally flow 
+Ans:  see from pdf notes
+=====================================
+Q;- ways to create custom exception.?
+ans:-   Sometimes we can create our own exception to meet our programming requirements.
+Such type of exceptions are called customized exceptions (user defined exceptions)
+Example:
+1. InSufficientFundsException
+2. TooYoungException
+3. TooOldException
+Program:
+classTooYoungException extends RuntimeException
+{
+TooYoungException(String s)
+{
+super(s);
+}
+}
+classTooOldException extends RuntimeException
+{
+TooOldException(String s)
+{
+super(s);
+}
+}
+classCustomizedExceptionDemo
+{
+public static void main(String[] args){
+int age=Integer.parseInt(args[0]);
+if(age>60)
+{
+throw new TooYoungException("please wait some more time.... u will get best
+match");
+}
+else if(age<18)
+{
+throw new TooOldException("u r age already crossed....no chance of getting
+married");
+}
+else
+{
+System.out.println("you will get match details soon by e-mail");
+}}}
+Output:
+1)E:\scjp>java CustomizedExceptionDemo 61
+Exception in thread "main" TooYoungException:
+please wait some more time.... u will get best match
+atCustomizedExceptionDemo.main(CustomizedExceptionDemo.java:21)
+2)E:\scjp>java CustomizedExceptionDemo 27
+You will get match details soon by e-mail
+3)E:\scjp>java CustomizedExceptionDemo 9
+Exception in thread "main" TooOldException:
+u r age already crossed....no chance of getting married
+atCustomizedExceptionDemo.main(CustomizedExceptionDemo.java:25)
+Note: It is highly recommended to maintain our customized exceptions as unchecked by
+extending RuntimeException.
+We can catch any Throwable type including Errors also
+==============================================
+How do you resolve a null pointer exception?
+Ans:- One way you can use if(str==null) condition 
+      Best 2nd way is using StringUtils third party api it apacche tomcat api. you need to put apache commonc dependecy in porm.xml file.
+      3rd auto boxing is not good practice to avoid null exception.
+  ====================================================
+1.What is an exception?
+Exceptions are the objects representing the logical errors that occur at run time and makes JVM enters into the state of 
+ "ambiguity".
+The objects which are automatically created by the JVM for representing these run time errors are known as Exceptions
+============================================================= 
+2.What are the differences between exception and error.
+
+An Error is a subclass of Throwable that indicates serious problems that a reasonable application should not try to catch. 
+Most such errors are abnormal conditions.
+Difference between exception and error
+===================================================================
+3.How the exceptions are handled in java
+
+Exceptions can  be handled using try catch blocks.
+The statements which are proven to generate exceptions need to keep in try block so that whenever is there any exception
+ identified in try block that will be assigned to corresponding exception class object in catch block
+More information about try catch finally
+=======================================================================
+4.What is the super class for Exception and Error
+Throwable.
+public class Exception extends Throwable implements Serializable
+=============================================================================
+5.Exceptions are defined in which java package
+java.lang.Exception
+===========================================================
+6.What is throw keyword in java?
+Throw keyword is used to throw exception manually.
+Whenever it is required to suspend the execution of the functionality based on the user defined logical error condition
+ we will use this throw keyword to throw exception.
+===================================================
+7.Can we have try block without catch block
+
+It is possible to have try block without catch block by using finally block
+Java supports try with finally block
+As we know finally block will always executes even there is an exception occurred in try block, Except System.exit() it will executes always.
+Is it possible to write try block without catch block
+====================================================================
+8.Can we write multiple catch blocks under single try block?
+
+Yes we can write multiple catch blocks under single try block.
+Multiple catch blocks in java
+
+======================================================================
+9. What are unreachable blocks in java
+
+The block of statements to which the control would never reach under any case can be called as unreachable blocks.
+Unreachable blocks are not supported by java.
+Unreachable blocks in java
+====================================================
+
+10.How to write user defined exception or custom exception in java
+
+By extending Exception class we can define custom exceptions.
+We need to write a constructor for passing message .
+User defined exception in java
+
+class CustomException extends Exception { } // this will create Checked Exception
+class CustomException extends IOExcpetion { } // this will create Checked exception
+class CustomException extends NullPonterExcpetion { } // this will create UnChecked
+exception
+=======================================================================
+11.What are the different ways to print exception message on console.
+
+In Java there are three ways to find the details of the exception .
+They are 
+Using an object of java.lang.Exception
+Using public void printStackTrace() method
+Using public String getMessage() method.
+===================================================================
+
+12.What are the differences between final finally and finalize in java.?
+ans:-     final:
+ final is the modifier applicable for classes, methods and variables.
+ If a class declared as the final then child class creation is not possible.
+ If a method declared as the final then overriding of that method is not possible.
+ If a variable declared as the final then reassignment is not possible
+
+finally:
+ finally is the block always associated with try-catch to maintain clean up code
+which should be executed always irrespective of whether exception raised or not
+raised and whether handled or not handled.
+finalize:
+ finalize is a method, always invoked by Garbage Collector just before destroying
+an object to perform cleanup activities.
+Note:
+1. finally block meant for cleanup activities related to try block where as finalize()
+method meant for cleanup activities related to object.
+2. To maintain clean up code finally block is recommended over finalize() method
+because we can't expect exact behavior of GC.
+
+===========================================================
+13.Can we write return statement in try and catch blocks.
+Yes we can write return statement of the method in try block and catch block
+We need to follow some rules to use it.Please check below link
+Return statement in try and catch blocks
+==================================================================
+14. Can we write return statement in finally block.
+Yes we can write return statement of the method in finally block
+We need to follow some rules to use it.Please check below link
+Return statement in finally block
+=========================================================================
+15. What are the differences between throw and throws.
+ throw keyword used to throw user defined exceptions.(we can throw predefined exception too)
+Using throws keyword we can explicitly provide the information about unhand-led exceptions of the method to the end user, 
+Java compiler, JVM.
+===============================================================================================================
+ 16.Can we change an exception of a method with throws clause from unchecked to checked while overriding it? 
+
+ No. As mentioned above already
+If super class method throws exceptions in sub class if you want to mention throws  then use  same class  or its  sub class exception.
+So we can not change from unchecked to checked 
+=================================================================================================
+ 17.What are the rules we need to follow in overriding if super class method throws exception ?
+
+ If sub class throws checked exception super class should throw same or super class exception of this.
+If super class method  throws checked or unchecked exceptions its not mandatory to put throws in sub class overridden method.
+If super class method throws exceptions in sub class if you want to mention throws  then use  same class  or its  sub class exception.
+
+================================================================================================
+18.What happens if we not follow above rules if super class method throws some exception.
+
+ Compile time error will come.
+
+package MethodOverridingExamplePrograms;
+public class Super{
+ 
+public void add(){
+ System.out.println("Super class add method");
+}
+
+}
+
+package MethodOverridingInterviewPrograms;
+public class Sub extends Super{
+  
+void add() throws Exception{ //Compiler Error: Exception Exception is not compatible with
+throws clause in Super.add()
+System.out.println("Sub class add method");
+
+}
+
+}
+
+package ExceptionHandlingInterviewPrograms;
+public class Super{
+ 
+public void add(){
+ System.out.println("Super class add method");
+}
+
+}
+
+package ExceptionHandlingInterviewPrograms;
+public class Sub extends Super{
+  
+void add() throws NullPointerException{ // this method throws unchecked exception so no
+isuues
+System.out.println("Sub class add method");
+
+}
+
+}
+==================================================================================
+ 19. Is it possible to write multiple exceptions in single catch block
+
+
+It is not possible prior to java 7.
+new feature added in java 7.
+
+
+package exceptionsFreshersandExperienced;
+public class ExceptionhandlingInterviewQuestions{
+ 
+/**
+ * @www.instanceofjava.com
+ **/
+ public static void main(String[] args) {
+
+ 
+try {
+ 
+// your code here
+            
+} catch (IOException | SQLException ex) {
+            System.out.println(e);
+}
+ 
+}
+ 
+}
+=====================================================================
+20. What is try with resource block
+
+One more interesting feature of Java 7 is try with resource 
+In Java, if you use a resource like input or output streams or any database connection logic you always need to close it after using. 
+It also can throw exceptions so it has to be in a try block and catch block. The closing logic  should be in finally block. This is a least the way until Java 7. This has several disadvantages:
+
+    You'd have to check if your ressource is null before closing it
+    The closing itself can throw exceptions so your finally had to contain another try -catch
+    Programmers tend to forget to close their resources
+
+The solution given by using try with resource statement.
+
+try(resource-specification) 
+{
+ 
+//use the resource
+ 
+}catch(Exception e)
+{
+ 
+//code
+
+}

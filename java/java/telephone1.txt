@@ -1,0 +1,313 @@
+
+======================================(11)
+Do you follow agile termonology.?
+what are oops principle.?
+what is subString method working.? will it create new string or not.?
+what is diff between split and subString() method.?
+I want to get repeated word in from string .?
+what are method avaiable in object class.?
+wait, notify, notifyAll() methods are thread class method why all are defined in object class.?
+what is the used of synchronized keyword.?
+what diff between synchronized block and synchronized method.?
+2. What is the difference between Collection API and Streams API? What is the value added by streams actually?
+3. What is the use of generics? How generics help developer?
+4. Which case do you use ? (Question Mark) in generics? 
+5. Thread life cycle? 
+6. What is Concurrent Hashmap? Compare it with Hashmap. 
+7. Can we add a new entry to Hashmap while iterating?
+8. I have a set of elements which are not duplicates. Which collection you would use to store these objects?
+9. Can you explain the hashing technique to make Java store all specific objects in one bucket? 
+10. When you say multi threading. Is it of any use in single core system? 
+========================
+Spring
+how you will convert ejb project into spring mvc project.?
+what will you configure in spring configure file.?
+what is the dipactache servlet.?
+what is dependency injection.?
+does it servlet container have dependency injection feature.?
+have you now javascript.?
+do no now about any desgin pattern.?
+singleton,factory,front controller,,mvc,  used in project 
+
+Database:-
+==========
+Which Database you have used mostly i am good in MySQl object .?
+what is self join.?
+why indexs are used .?
+
+webservices:-
+=============
+how do you specified the query paramter.?/
+which tool you used for testing in restapi.?
+why webservices are required.?
+
+hibernate:-
+===========
+what are repostory in spring spring data.?
+what is pagiantion in hibernate.?
+what is cahce mechanism in hibernate.?
+
+what kind of project you have .? what are technology you are using in project.?
+
+
+===================================================(7)
+Questions asked in this interview::
+
+11. Do you have any idea of Servlet filter? Explain the purpose and where would you use? 
+12. Can I modify the request headers in the filter? 
+13. What is the design pattern used in Spring IOC? 
+14. Do you have deep knowledge of design patterns? 
+15. Do you know what design pattern is used in java IO stream?
+16. When can I go with REST API, When can I go with SOAP?
+17. Do you see any positive part of using SOAP web service with XML? 
+18. What are the different scopes of spring bean?﻿
+
+
+===============================================(6)
+1. Out of GET, PUT, POST and DELETE which one is idempotent. 
+2. Can you tell me what are the design patterns you have used?
+3. What is the difference between factory design patterns and Abstract Factory design pattern?
+4. How do you refer element inside you CSS, by name or by type? How you do that?
+5. I have a DIV inside a list, then I want to apply some styling to this div. How would I do that? 
+6. What is the difference between equi join and natural join? and What is cross join?
+7. What is the difference between left and right outer joins? and what is the default join?
+8. There is something called as Pre-processor, Post Processor, Filter, Handler, URL mapper, and View Resolver. Tell me the right sequence.
+9. What is the use of URL mapper?
+10. Have you worked on Autowiring? What is the use of Autowiring?
+11. Have you worked on AOP?
+12. If I ask you three things, filter, around advice, and URL mapper. Which one will come first?
+13. I have a table with two columns, and I want to swipe the content of these two columns. How will I do? with query. 
+14. Can you tell me some Mutable and Non-mutable types in Java?
+15. What are the best practices of garbage handling?
+16. How do you resolve a null pointer exception?
+
+===============================================(5)
+
+Here are the questions asked in above interview:
+
+what are the features added in Java-8?
+what is the advantage of new features available in Interfaces in Java-8?
+what is the purpose of using Atomic variables?
+synchronization and diff. between obj. level lock and class level lock?
+what is externalizable interface and how it differs with serializable interface?
+what are the types of statements available in JDBC and how it differs with eachother?
+what are sequences in Oracle?
+Example of left outer join
+what are webservices? Explain REST abbrevation and its usage. why it is called Representational State Transfer?
+How data consumes in Rest webservice.
+which design patterns you've used?
+what are the differences between abstract factory design pattern and factory-method design pattern?﻿
+ 
+======================================================(4)
+what is immutable class? How can you write a custom class as immutable?
+How can you able to sort out the data available in a list of employees on basis of employeeName and employeeAge?
+How can you sort out the above data on basis of empDept and if same dept, then sort out on basis of empName.How can you do so?
+what is the difference between HashSet and LinkedHashSet?
+what is the default sorting order in TreeMap?
+what is the diff. between wait and sleep?
+what are the bean scopes available in spring?
+what is the diff. between prototype and request scope in spring?
+what is cascade attribute? what are the options available for CASCADE?﻿
+=====================================================(part 1 of 10)
+
+what are oops principle.?
+which desgin pattern used in usecase.?(ans is singleton)
+==============================================================(9)
+what are collection you have used for sort out in application.?
+have you used cutomized exception in your application.?
+have you used inner class in your application.?(interested about real time sineario)
+which version of spring you have used and it used anonation based used or xml based.?
+explain spring mvc flow when execute app?
+by default hibernate which loading how to disable it.
+how to create primary key in hibernate .?
+what type of injection used in app.?
+how to convert incoming xml response into json .?
+
+=======================================================================(8)
+what is the advantage of restful webservice over soap.? secuirty wise which is more secure.?
+what ttype of design pattern you have used.(gof desgin patter used singleton,factory in j2ee i used mvc desgin pattern, front controller desgin pattern, dao desgin pattern and intercesptig filters i have used)
+why we have to  used these desgin patterns.? (improve code qulaity, and maintence).?
+what is diff b/w constuctor injection and setter injection.? not syntax diff asking tell me internally diff.?
+Explain cache mechanism in hibernate.? when cache will be expire.?
+what are advantage og orm framework on jdbc.?
+what is immutable class.?
+i have onec class which have two fileds firstname and lastname how to declare this immutable.?
+why this class have immutable how it use for end user.?
+what is the purpose of hashcode and equals methods.?
+have you idea about current hashmap.?
+
+======================================================(3)
+on Exception topic.?
+what are the various state of hibernate.?
+====================================================(1)
+tell me somthing about last project.?
+how to are using restAPI in your project.?
+are you using any tool for consume rest service.?
+which type protocol you are using .?
+you rate yourself in rest service.?(6.5 to 7)
+you rate yourself in core java.?(7)
+what is the diff between jdk and jre.?
+if we have only jre and jar file can we run app.?
+diff b/w war and  jar file.?
+did you get chance to deploy the application.?
+no bcz currently i am working as software enginer.
+what is the diff b/w abstract and interface give real time example.?
+what is serialization how you can impelement.?
+diff b/w transient and static in serialization.?
+what is checkd and unchecked exception.?
+why we use exception handling.?
+what is finally block if we put return statement in try.? can execute finally block.
+if we put in catch block then.
+what is synchronization in thread.?
+diff b/w runnable interface and thread class.
+whiich one is best.?
+new features in java 1.5,1.6 and 7
+what is autoboxing.?
+do you know about desgin pattern.?
+how to create singleton desgin pattern.
+what is wsdl file.?
+diff b/w soa and rest based service.?
+what is servlet context object.? how many instance there.?
+what is servlet config.?
+what are implicit object in jsp.?
+what are main feature of spring.?
+what is autowire in spring.?
+what are main interfcae in spring.?
+diff b/w application context and bean factory.?
+how to config bean in spring spring.how to get bean in spring.?
+main interfcae in hibernate.?
+what is diff b/w load method and getmethod.?
+how you will save object in db. using hibernate.?
+what type to project you will if i selected and what technologies we wil use.?
+how was my interview any suggestion for interview it will help ful for me.?
+
+===========================================================================
+1. Factory method implementation in your project.?
+2. singleton how to implement  multithreading safety.?
+3. have you done any performance improvment activity /coding.?
+4. how to handle memory leaks.?
+5. diff b/w hashmap and hastable other then synchronized.? how hashtable works internally.?
+6.  Arraylist list1=new Arraylist();
+   Arraylist list2=new Arraylist();
+   result of list1==list2,list1.equals(list2)
+4. where methods are stored in memory.?(clear memory management concept)
+5. diff b/w stack and queue .?
+6. diff b/w linked list and array list.?
+7. what is list .?
+8. which list is most useful for searching.?
+9. which list is most useful for insertion and deletion.?
+10. which list is most useful for travesring.?
+11. what is diff b/w vector and array list.?
+12. how memory manage in arraylist and vector.?
+13. classloader types .? how to create own class loader.?
+14. Memory management in application.?
+15. where local,static variables, native method store in memory.?
+16. Synchronized block in recursive method. what will happen.?
+17. jsp implicit object.?
+18. diff b/w httpjspage and pagecontext.?
+19. scoppe in jsp and servlet.?
+20. equi join.? write query of inner join on two tables.?
+21. differnt joins.
+22. what is builder desgin pattern.?
+23. desgin table for libaray management app.?
+24. serilaization of class  what if it contains  reference /objects  of other classes.do you need serilaize them.? any exception.?
+25. how to sort employee class.?
+26. how to synchornize two hashmap in singleton class.?(once again singleton topic)
+27. how to enhance a simple select * query for millions of records.?
+28. how to sort list of objects.? (Once again list sort question)
+29. facade desgin pattern.?
+30. what is view in database.?
+31. how to avoid database persistence class.?
+32. can we rename web.xml.?
+33. can we have same context root for two apps in app server.?
+34. what is connection pool.?
+35. how to get DB connection in your code.?
+36. infinite empty loop  what will happen.? 
+Ans :-memmory  out of error or it will keep running.
+37. state and stratgy desgin pattern.?
+38. how class loader load class.?
+39. Twice null added in set  what will happen.?
+40. thread life cycle.?
+41. object and class level locking .?
+42.sleep and wait usage and how it works.?
+43. how marker interface works.? how jvm know about it .?how to create own marker interface.?
+44. diff b/w arraylist and linked list .? Is random access a marker interface?
+45. can we create/throw run time exception and catch.?
+
+
+==============================================================
+what is servlet.?
+what is jsp.?
+whihc is faster servelet or jsp.?
+what is doc fle.?
+what is annotation.?
+what is request dispachachter.?
+what is @ in annotation.
+what is get and post mthod in servlet.?
+
+===================================================================
+                                                        IBM
+														====
+Q. What is Difference between interface and abstract class?
+Ans : Interface and Abstract class both are looks similar from declaration point of view. The major difference is for implementing multiple inheritance you need interface, because java does not support multiple inheritance. All methods and variables of interface are public. Interface can contain only abstract method (without method body) , but abstract class can contains abstract and non-abstract methods. Abstract class must be inherited by sub class. These are few major points you can answer for interview. For more in interface read here.
+
+Q. Can you write final method in interface?
+Ans : No , because interface methods do not have body . It need to be implement in implemented class.
+
+Q. Is this possible to write final method in abstract class?
+Ans : Yes, you can do this by using non abstract methods.
+
+Q. What is Difference between Iterator and ListIterator?
+Ans : Both are used to retrieve the data from collection. Iterator only traverse in forward direction, but ListIterator can traverse in both forward and backward direction. ListIterator has hasPrevious() and previous() method which is not available in Iterator.
+Q. Difference between synchronized block and synchronized method ?
+Ans : Synchronized Method defines a self contained block and its easy to handle in multi-threaded environment. Both act as similar; there is no major advantage over each other. The difference is that a synchronized block can choose which object it synchronizes on. A synchronized method can only use 'this' (or the corresponding Class instance for a synchronized class method).
+
+Q. Difference between String and StringBuffer class ?
+Ans : String is immutable, but StringBuffer is not. StringBuffer used to represent characters that can be modified. StringBuffer is faster when performing concatenations. This is because when you concatenate aString, you are creating a new object (internally) every time sinceString is immutable.
+
+Q. How to get the session object in jsp?
+Ans : By using implicit object “session”. You can usesession.getAttributes() methods.
+
+Q. How to get the session factory object in hibernate?
+Ans : By the use of buildSessionFactory() method .Syntax as below.
+
+SessionFactory factory= new Configuration().configure().buildSessionFactory();
+Q. How to handle the runtime exception in jsp?
+Ans : In jsp page directive you can use isErrorPage=true.
+
+Q. Difference between method overloading and overriding?
+Ans : Both are concept of polymorphism. Method overloading is a form of static binding. Method overriding is a form dynamic binding. Overloading is applied in single class, but overriding is applicable for inherited class. Method overloading is always specific to method signature. It defines number of parameter, type of parameter and sequence of parameter.
+
+Q. Difference between java.util.date and java.sql.date ?
+Ans : As we know every database support most three form of entry i.e. date, time and timestamp. In java JDBC having all those supports using java.sql.Date, java.sql.Time, java.sql.TimeStamp. Internally all these JDBC classes extends java.util.Date.
+
+Q. I have 1 to 100 elements in array unordered, one element missed find that one?
+Ans : There is existing old formula. Calculate the sum of all numbers stored in the array of size 11 means it hold 12 data. Then, subtract the sum from (12 * 13)/2
+Basic Formula: n * (n + 1) / 2. 
+Q. Difference between equals() and hashcode()?
+Ans : Both methods are from Object class. Equals() method is used to compare the contents of object or reference. But, hashcode() method is used to get the unique hash code for any object. Hashcode is used for hash implementations like HashMap, HashTable, HashSet etc.
+
+Q. What is Comparator?
+Ans : It’s an interface. It has 2 important methods. But, the frequently used method is compareTo() . It compares 2 different objects.
+
+Q. We have equals() to compare two methods then why comparator again ?
+Ans : Because , equals() method will only compare the content . It cannot compare two different objects. Comparator interface hascompareTo() method which compare 2 different object.
+
+Q. What is autowiring in spring ?
+Ans : Autowiring is a mechanism for injecting objects in Spring. By using the annotation @Autowired , you can achieve that.
+
+Its available inside org.springframework.beans.factory.annotationpackage.
+
+Q. We can get the container object through Bean factory and Application context what is the difference in both?
+Ans : A BeanFactoryis used to just instantiates and configures beans. An ApplicationContextalso does that, andit provides the supporting infrastructure to enable lots of enterprise-specific features such as transactions and AOP. Read more on Spring Specification.
+
+Q. What is the Difference between get() and load() in hibernate ?
+Ans : These two methods are most useful method in Hibernate. Both method s are used to get/fetch the records from database. The get() method will return null , if the data not found. The load() method always returns proxy.
+
+Q. Difference between page and page context in jsp ?
+Ans : As we know both are implicit object of JSP. Page is a type java.lang.Object and it’s an instance of generated servlet from “this” JSP, but PageContext is a type of javax.servlet.jsp.PageContext. PageContext is used for storing and retrieving page-related information and sharing objects within the same translation unit and same request.
+
+Q. What is application in jsp ?
+Ans : It’s a scope. It defines the visibility for data over Application.
+
+===============================================================================

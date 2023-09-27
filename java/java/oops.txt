@@ -1,0 +1,293 @@
+Q:- what are oops principle.?
+Ans:- pdf notes.
+=======================
+Q. Difference between method overloading and overriding?
+Ans : Both are concept of polymorphism. Method overloading is a form of static binding. Method overriding is
+ a form dynamic binding. Overloading is applied in single class, but overriding is applicable for inherited class.
+ Method overloading is always specific to method signature. 
+It defines number of parameter, type of parameter and sequence of parameter.
+=======================================
+Q:- what is subString method working.? will it create new string or not.?
+Ans:-   https://www.codenuclear.com/how-substring-works-internally-java/
+====================================================
+Q:- what is diff between split and subString() method.?
+Ans :-  String [] Split(regx):-
+       ----------------------
+	   It is used for  making the String  content in to multiple parts based on the specified character or word as the delimiter on all occurence.
+	   
+	   String [] Split(String str,int limt):=
+	   -------------------------------------
+      It is used for  making the String  content in to multiple parts based on the specified character or word as the delimiter up to the limit value occurence.
+	  If limit value is with in the range then as per the limit only it will stop the spliting.
+	  if we provide the limit value as <1 ans >no of occurence i.e out of range of occurencethen it will do normal spliting of the String content.
+	  ================================================
+	  subString():-
+	  ------------
+	  it is newly defined method in string class which is used for displaying the specified part of string content.
+	  ======================================================================================================
+Q:- I want to get repeated word in from string.?
+Ans:- 
+   import java.util.HashMap;
+    import java.util.Map; 
+    import java.util.Scanner;
+ 
+// How to find repeated/duplicated words in a string using Java
+public class DuplicateWords {
+     
+    public static void main(String[] args) {
+        System.out.print("Enter string to analyse:");
+        Scanner sn = new Scanner(System.in);
+        String input = sn.nextLine();
+         
+        // first let us split string into words
+        String[] words = input.split(" ");
+         
+        // adds all words into a map
+        // we also check whether the word is already in map!
+        Map<String,String> wordMap = new HashMap<String,String>();
+        for(int i=0;i<words.length;i++) {
+            String word = words[i].toUpperCase(); // for case insensitive comparison
+            if(wordMap.get(word)!=null) {
+                // we found a duplicated word!
+                System.out.println("Duplicated/Repeated word:"+word);
+            }else {
+                wordMap.put(word, word);
+            }
+        }
+    }   
+}
+
+If a word is repeated more than once, it is printed multiple times. The following program fixes this by keeping track of 
+printed words using another map.
+
+import java.util.HashMap;
+import java.util.Map;
+import java.util.Scanner;
+ 
+// How to find repeated/duplicated words in a string using Java
+public class DuplicateWords2 {
+     
+    public static void main(String[] args) {
+        System.out.print("Enter string to analyse:");
+        Scanner sn = new Scanner(System.in);
+        String input = sn.nextLine();
+         
+        // first let us split string into words
+        String[] words = input.split(" ");
+         
+        // adds all words into a map
+        // we also check whether the word is already in map!
+        Map<String,String> wordMap = new HashMap<String,String>();                
+        Map<String,String> printedMap = new HashMap<String,String>();
+ 
+        for(int i=0;i<words.length;i++) {
+            String word = words[i].toUpperCase(); // for case insensitive comparison
+            if(wordMap.get(word)!=null) {
+                // we found a duplicated word!
+                if(printedMap.get(word)==null) { // first check if it is printed already!
+                    System.out.println("Duplicated/Repeated word:"+word);
+                    printedMap.put(word, word); 
+                }
+            }else {
+                wordMap.put(word, word);
+            }
+        }
+    }
+     
+}
+==================================================================================
+Q:- what are method avaiable in object class.?
+Ans:- 
+    1. public String toString();
+2. public native int hashCode();
+3. public boolean equals(Object o);
+4. protected native Object clone()throws CloneNotSupportedException;
+5. public final Class getClass();
+6. protected void finalize()throws Throwable;
+7. public final void wait() throws InterruptedException;
+8. public final native void wait()throws InterruptedException;
+9. public final void wait(long ms,int ns)throws InterruptedException;
+10. public final native void notify();
+11. public final native void notifyAll();
+=====================================================================   
+Q:- What is inner class .? have you used inner class in your application.?(interested about real time sineario)
+Ans:- from copy mam notes.
+===========================================
+Q:-what is immutable class.?
+Ans:- Once we created an object we can't perform any changes in the existing object.
+If we are trying to perform any changes with those changes a new object will be created.
+If there is no change in the content then existing object will be reused. This behavior is
+called immutability. Example String class
+(from copy notes and durga notes 406) 
+===============================
+Q:- i have onec class which have two fileds firstname and lastname how to declare this immutable.?
+Ans:- from copy notes
+===========================================
+why this class have immutable how it use for end user.?
+==============================================
+Q:- what is the diff between jdk and jre.?
+Ans:- page 628
+====================================================
+Q:-if we have only jre and jar file can we run app.?
+Ans:-yes
+============================================ 
+Q:- diff b/w war and  jar file.?
+Ans:- jar file mean java archiche and war means web archive  combine collection of package into one group then we will place into jar file
+war contain compelte of the application you deploy the app using war file.
+==========================================================
+Q:- did you get chance to deploy the application.?
+ans:-  nope i didnt get the chance till now . bcz currently i am working as software enginer.
+=======================================================================
+Q:- what is the diff b/w abstract and interface give real time example.?
+Ans:-  form durga interview video youtube
+======================================================
+Q:- classloader types .? how to create own class loader.?
+Ans:- https://www.journaldev.com/349/java-classloader
+=================================================================
+Q:- Memory management in application.?
+Ans: form copy
+===================================
+Q:- where local,static variables, native method store in memory.?
+Ans:- form copy
+==================================
+Q:-how class loader load class.?
+Ans:- https://www.journaldev.com/349/java-classloader
+============================================================
+Q:- how marker interface works.? how jvm know about it .?how to create own marker interface.?
+Ans:- page 173 pdf
+======================================== 													
+Q. Can you write final method in interface?
+Ans : No , because interface methods do not have body . It need to be implement in implemented class.
+===========================================================
+Q. Is this possible to write final method in abstract class?
+Ans : Yes, you can do this by using non abstract methods.
+=========================================================================
+Q. Difference between String and StringBuffer class ?
+Ans : page 143.
+============================================================
+Q;- flow execution of static block 
+Ans:-   dande notes
+=-===============================
+Q:-  What is the use of generics? How generics help developer?
+=========================================================
+Q:- how to handle memory leakage.?
+===========================
+Q:- where method are stored in memory.?
+Ans:- stack memmory
+=======================================
+Q:- infinite empty for loop  what will happen? memmory  out of error or it will keep running.?
+==========================================================
+Q:- what is abstraction how to implement.?
+Ans:- page 187 pdf
+==================================
+Q:- what wil happen if donot have any abstract method class.?
+Ans:- Declaring a class abstract only means that you don't allow it to be instantiated on its own.
+Declaring a method abstract means that subclasses have to provide an implementation for that method.
+The two are separate concepts, though obviously you can't have an abstract method in a non-abstract class.
+ You can even have abstract classes with final methods but never the other way around.
+==================================================================
+Q:- how to move string from string pool to heap area .?
+Ans:- You can't move a String Literal from String Pool to Heap.
+
+String pool is basically a cache for Strings inside the Heap only. 
+When you use a String literal like "Hello" it is interned i.e. its String Object is moved to the String pool , 
+any further reference to "Hello" is pointing to the same String object present in String Pool.
+So 
+ String a = "Java";
+ String b = "Java";
+=> a, b refer to the same object from String Pool area.
+If we try,
+ String f =  new String("Java");
+=> It creates a new Object in Heap. So new memory space.
+
+You can not move a String Literal from String Pool to Heap, but you can move a String Object from Heap to the Pool by 
+calling intern() method of java.lang.String class.
+========================================================================================
+Q:- flow of execution :- static block ,constructor,parameterized constructor,inherited constructor.?
+=========================================================
+Q:- method of object creation.?
+Ans:- https://www.geeksforgeeks.org/different-ways-create-objects-java/
+===============================================================
+Q:- finalise method().?
+ANS:- finalize is a method, always invoked by Garbage Collector just before destroying
+an object to perform cleanup activities.
+======================================
+Q:- super () and this() in constructor.?
+ANs:- super()- calls the base class constructor whereas
+this()- calls current class constructor.
+Both this() and super() are constructor calls.
+Constructor call must always be the first statement. So we can not have two statements as first statement, 
+hence either we can call super() or we can call this() from the constructor, but not both.
+===============================================
+Q:- interface variable.?
+Ans:- Interface variables are static because Java interfaces cannot be instantiated in their own right; the value of the variable
+ must be assigned in a static context in which no instance exists. 
+The final modifier ensures the value assigned to the interface variable is a true constant that cannot be re-assigned by program code.
+========================================================
+Q:- can we have final constructor.?
+Ans:- 
+No Constructors can NEVER be declared as final. Your compiler will always give an error of the type "modifier final not allowed" Final, 
+when applied to methods, means that the method cannot be overridden in a subclass. Constructors are NOT ordinary methods. 
+(different rules apply) Additionally, Constructors are NEVER inherited. So there is NO SENSE in declaring it final
+=============================================
+Q:- what is prepared statement.?
+==================================
+Q:- JDBC full form.?
+Ans:- Java Database Connectivity (JDBC) 
+=============================
+Q:- JNDI full form.?
+Ans:- Java Naming and Directory Interface (JNDI) 
+==================
+Q:- Aggrigation and composition.?
+Ans: - read form psf notes.
+=======================================
+Q:- is A and Has A relationship.?
+Ans: read form psf notes.
+=======================================
+Q:- Abstract and encapsulation.?
+Ans: -read form psf notes.
+=======================================================
+Q:- create a immuatable class without using final keyword.?
+Ans:- https://stackoverflow.com/questions/5403132/how-to-create-an-immutable-class-in-java-without-using-final-keyword
+===================================================================
+Q:- wrapper objects are immutable.?
+Ans:- https://www.geeksforgeeks.org/primitive-wrapper-classes-are-immutable-in-java/
+==================================================
+Q:- Genrics and its benefits.?
+=================================================
+Q:- In method if string object created where string object goes in memmory.?
+=================================================
+Q:- what is mark and sweep in gc.?
+Ans:- https://www.geeksforgeeks.org/mark-and-sweep-garbage-collection-algorithm/
+=================================================
+Q:- when you override equals .?
+Ans:-  for content comparision 
+====================================================
+Q:- why we not use object class equals.?
+Ans:-  for addresss comparision 
+===============================================
+Q:- why string is immuatable.?
+Ans:- https://javarevisited.blogspot.com/2010/10/why-string-is-immutable-or-final-in-java.html
+=====================================================
+Q:- can we have own marker interface.?
+========================================
+Q:- hashcode and equals.?
+Ans:-  page 386
+=====================================================
+Q:- what is enum .? can we have constructor and method in enum.? purpose of it.?
+Ans:- 596
+=========================================
+Q:- what is refection api and how framework use refection api.?
+Q:- static method and static block .?
+Q:- new features in JDK 5 or jdk 7?
+Q:- clonnigg in detail.?
+Q:- deep cloning and sahllow clonning.?
+Q:- what is dynamic method invocation in java .?(polymorphism)
+Q;- what is auto boxing.?
+Q:-polymorphism rules(overloading and overriding rules) related to visiblity and exception.?
+Q:- use of final keyword.?
+Q:- what are static variable.?
+Q:- can we have constructor in abstract calss.?
+Q:- how to implement run time polymorphism.?
+
+ 

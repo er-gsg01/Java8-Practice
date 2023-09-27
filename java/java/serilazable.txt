@@ -1,0 +1,363 @@
+what is externalizable interface and how it differs with serializable interface?
+Ans:-  1. In default serialization every thing takes care by JVM and programmer doesn't
+have any control.
+2. In serialization total object will be saved always and it is not possible to save part
+of the object , which creates performence problems at certain point.
+3. To overcome these problems we should go for externalization where every thing
+takes care by programmer and JVM doesn't have any control.
+4. The main advantage of externalization over serialization is we can save either
+total object or part of the object based on our requirement.
+5. To provide Externalizable ability for any object compulsory the corresponding
+class should implements externalizable interface.
+6. Externalizable interface is child interface of serializable interface.
+
+Externalizable interface defines 2 methods :
+1. writeExternal( )
+2. readExternal( )
+public void writeExternal(ObjectOutput out) throws IOException
+This method will be executed automaticcay at the time of Serialization with in this
+method , we have to write code to save required variables to the file .
+
+public void readExternal(ObjectInput in) throws IOException ,
+ClassNotFoundException
+This method will be executed automatically at the time of deserialization with in this
+method , we have to write code to save read required variable from file and assign to the
+current object
+At the time of deserialization Jvm will create a seperate new object by executing public
+no-arg constructor on that object JVM will call readExternal() method.
+Every Externalizable class should compusory contains public no-arg constructor
+otherwise we will get RuntimeExcepion saying "InvaidClassException" .
+Example :
+import java.io.*;
+classExternalDemo implements Externalizable {
+String s ;
+int i ;
+int j ;
+publicExternalDemo() {
+System.out.println("public no-arg constructor");
+}
+publicExternalDemo(String s , int i, int j) {
+this.s=s ;
+this.i=i ;
+this.j=j ;
+}
+public void writeExternal(ObjectOutput out) throws IOException {
+out.writeObject(s);
+out.writeInt(i);
+}
+public void readExternal(ObjectInput in) throws IOException ,
+ClassNotFoundException {
+s=(String)in.readObject();
+i= in.readInt();
+}
+}
+public class Externalizable1 {
+public static void main(String[] args)throws Exception {
+ExternalDemo t1=new ExternalDemo("ashok", 10, 20);
+FileOutputStreamfos=new FileOutputStream("abc.ser");
+ObjectOutputStreamoos=new ObjectOutputStream(fos);
+oos.writeObject(t1);
+FileInputStreamfis=new FileInputStream("abc.ser");
+ObjectInputStreamois=new ObjectInputStream(fis);
+ExternalDemo t2=(ExternalDemo)ois.readObject();
+System.out.println(t2.s+"-------"+t2.i+"--------"+t2.j);
+}
+}
+output :
+public no-arg constructor
+ashok -------- 10 ------ 0
+
+1. If the class implements Externalizable interface then only part of the object will
+be saved in the case output is
+2. public no-arg constructor
+3. ashok ---- 10 ----- 0
+4. If the class implements Serializable interface then the output is ashok --- 10 --- 20
+5. In externalization transient keyword won't play any role , hence transient
+keyword not required.
+
+========================================================
+what is serialization.? how you can impelement.?
+Ans:-1. The process of saving (or) writing state of an object to a file is called serialization
+2. but strictly speaking it is the process of converting an object from java supported
+form to either network supported form (or) file supported form.
+3. By using FileOutputStream and ObjectOutputStream classes we can achieve
+serialization process.
+4. Ex: big ballon
+Note:
+1. We can perform Serialization only for Serilizable objects.
+2. An object is said to be Serilizable if and only if the corresponding class
+implements Serializable interface.
+3. Serializable interface present in java.io package and does not contain any
+methods. It is marker interface. The required ability will be provided
+automatically by JVM.
+4. We can add any no. Of objects to the file and we can read all those objects from
+the file but in which order we wrote objects in the same order only the objects
+will come back. That is order is important.
+5. If we are trying to serialize a non-serializable object then we will get
+RuntimeException saying "NotSerializableException".
+
+   Example:-
+   -----------
+import java.io.*;
+class Dog implements Serializable
+{
+int i=10;
+int j=20;
+}
+classSerializableDemo
+{
+public static void main(String args[])throws Exception{
+Dog d1=new Dog();
+System.out.println("Serialization started");
+FileOutputStreamfos=new FileOutputStream("abc.ser");
+ObjectOutputStreamoos=new ObjectOutputStream(fos);
+oos.writeObject(d1);
+System.out.println("Serialization ended");
+System.out.println("Deserialization started");
+FileInputStreamfis=new FileInputStream("abc.ser");
+ObjectInputStreamois=new ObjectInputStream(fis);
+Dog d2=(Dog)ois.readObject();
+System.out.println("Deserialization ended");
+System.out.println(d2.i+"................"+d2.j);
+}
+}
+Output:
+Serialization started
+Serialization ended
+Deserialization started
+Deserialization ended
+10................20   
+   
+==========================================================================
+diff b/w transient and static in serialization.?
+Ans:-    Transient:-
+         ----------
+1. transient is the modifier applicable only for variables.
+2. While performing serialization if we don't want to save the value of a particular
+variable to meet security constant such type of variable , then we should declare
+that variable with "transient" keyword.
+3. At the time of serialization JVM ignores the original value of transient variable
+and save default value to the file .
+4. That is transient means "not to serialize".
+          Static 
+		  -=====
+static variable is not part of object state hence they won't participate in
+serialization because of this declaring a static variable as transient there is no
+use. bcz static variable at class time loading it is not realted to object creation.
+even we declaring static variable as transient then there is no use. bcz it will not participate in serialization.
+===================================================================================================
+           
+Q:- serilaization of class  what if it contains  reference /objects  of other classes.do you need serilaize them.? any exception.?
+Ans:-1. Whenever we are serializing an object the set of all objects which are reachable
+from that object will be serialized automatically. This group of objects is nothing
+but object graph in serialization.
+2. In object graph every object should be Serializable otherwise we will get runtime
+exception saying"NotSerializableException".
+Example 4:
+import java.io.*;
+class Dog implements Serializable
+{
+Cat c=new Cat();
+}
+class Cat implements Serializable
+{
+Rat r=new Rat();
+}
+class Rat implements Serializable
+{
+int j=20;
+}
+classSerializableDemo
+{
+public static void main(String args[])throws Exception{
+Dog d1=new Dog();
+FileOutputStreamfos=new FileOutputStream("abc.ser");
+ObjectOutputStreamoos=new ObjectOutputStream(fos);
+oos.writeObject(d1);
+FileInputStreamfis=new FileInputStream("abc.ser");
+ObjectInputStreamois=new ObjectInputStream(fis);
+Dog d2=(Dog)ois.readObject();
+System.out.println(d2.c.r.j);
+}
+}
+Output:
+20
+
+ In the above example whenever we are serializing Dog object automatically Cat
+and Rat objects will be serialized because these are part of object graph of Dog
+object.
+ Among Dog, Cat, Rat if at least one object is not serializable then we will get
+runtime exception saying "NotSerializableException".
+========================================================================================================
+what is transient and volatile.?
+Ans:-
+ Transient:-
+         ----------
+1. transient is the modifier applicable only for variables.
+2. While performing serialization if we don't want to save the value of a particular
+variable to meet security constant such type of variable , then we should declare
+that variable with "transient" keyword.
+3. At the time of serialization JVM ignores the original value of transient variable
+and save default value to the file .
+4. That is transient means "not to serialize".
+
+Volatile:-
+========
+volatile variables are used in Concurrent programming in Java. When we declare a variable volatile, 
+every thread reads its value from main memory and don't used cached value available in every thread stack.
+ volatile variable also prevents compiler from doing reordering which can compromise synchronization. 
+transient variables are used to prevent serialization or a field while volatile variables are used to prevent reordering 
+and avoid reading cached value of field in multithreaded Java program. Only similarity between transient and volatile keyword 
+is that they are only applicable to field or properties of class. You can not use transient or volatile keyword during class 
+or method declaration in Java.
+
+======================================================================================
+what is custom serialization what is use of custom serialization how to impelement it.?
+Ans;-
+example before serialization Account object can provide proper
+username and password. But after Deserialization Account object can provide
+only username bur not password. This is due to declaring password as transient.
+Hence doing default serialization there may be a chance of loss of information
+due to transient keyword.
+ We can recover this loss of information by using customized serialization.
+
+We can implements customized serialization by using the following two methods:==
+----------------------------------------------------------------------------
+1. private void writeObject(ObjectOutputStreamos) throws Exception.
+This method will be executed automatically by jvm at the time of serialization.
+It is a callback method. Hence at the time of serialization if we want to perform
+any extra work we have to define that in this method only.
+(prepare encrypted password and write encrypted password seperate to the file )
+2. private void readObject(ObjectInputStream is) throws Exception.
+This method will be executed automatically by JVM at the time of
+Deserialization. Hence at the time of Deserialization if we want to perform any
+extra activity we have to define that in this method only.
+(read encrypted password , perform decryption and assign decrypted password
+to the current object password variable )
+
+Example 6:
+Demo program for customized serialization to recover loss of information which is
+happen due to transient keyword.
+import java.io.*;
+class Account implements Serializable
+{
+String userName="Bhaskar";
+transient String pwd="kajal";
+private void writeObject(ObjectOutputStreamos)throws Exception
+{
+os.defaultWriteObject();
+String epwd="123"+pwd;
+os.writeObject(epwd);
+}
+private void readObject(ObjectInputStream is)throws Exception{
+is.defaultReadObject();
+String epwd=(String)is.readObject();
+pwd=epwd.substring(3);
+}
+}
+classCustomizedSerializeDemo
+{
+public static void main(String[] args)throws Exception{
+Account a1=new Account();
+System.out.println(a1.userName+"........."+a1.pwd);
+FileOutputStreamfos=new FileOutputStream("abc.ser");
+ObjectOutputStreamoos=new ObjectOutputStream(fos);
+oos.writeObject(a1);
+FileInputStreamfis=new FileInputStream("abc.ser");
+ObjectInputStreamois=new ObjectInputStream(fis);
+Account a2=(Account)ois.readObject();
+System.out.println(a2.userName+"........."+a2.pwd);
+}
+}
+Output:
+Bhaskar.........kajal
+Bhaskar.........kajal
+
+At the time of Account object serialization JVM will check is there any writeObject()
+method in Account class or not. If it is not available then JVM is responsible to perform
+serialization(default serialization). If Account class contains writeObject() method then
+JVM feels very happy and executes that Account class writeObject() method. The same
+rule is applicable for readObject() method also
+
+=========================================================================================
+Difference between Serializable and Externalizable in Java?
+ans:-  
+
+    Serialization V/S Externalization
+	===========================================
+1.  It is meant for default
+1.  Serialization It is meant for Customized Serialization
+2.  Here every thing takes care by JVM and programmer doesn't have any control
+2.  Here every thing takes care by programmer and JVM doesn't have any control.
+3.  Here total object will be saved always and it is not possible to save part of the object.
+3.  Here based on our requirement we can save either total object or part of the object.
+4.  Serialization is the best choice if we want to save total object to the file.
+4.  Externalization is the best choice if we want to save part of the object.
+5.  relatively performence is low
+5.  relatively performence is high
+6.  Serializable interface doesn't contain any method , and it is marker interface.
+6.  Externalizable interface contains 2 methods :
+    1.writeExternal()  2. readExternal() It is not a marker interface.
+7.  Serializable class not required to contains public no-arg constructor.
+7.  Externalizable class should compulsory contains public no-arg constructor otherwise we will get RuntimeException saying "InvalidClassException"
+8.  transient keyword play role in serialization
+8.  transient keyword don't play any role in Externalization.
+==========================================================================================	
+how we can prevent sub class from serialization if super class is serializable.
+Ans:-If the superclass is serializable but we don’t want the subclass to be serialized : There is no direct way to prevent 
+subclass from serialization in java. One possible way by which a programmer can achieve this is by implementing the 
+writeObject() and readObject() methods in the subclass and needs to throw NotSerializableException from these methods.
+ These methods are executed during serialization and de-serialization respectively. By overriding these methods,
+ we are just implementing our own custom serialization.
+==========================================================================================
+what is serialversionUID and what is the use serialversionUID?
+Ans:- To perform Serialization & Deserialization internally JVM will use a unique identifier ,
+which is nothing but serialVersionUID .
+At the time of serialization JVM will save serialVersionUID with object.
+At the time of Deserialization JVM will compare serialVersionUID and if it is matched
+then only object will be Deserialized otherwise we will get RuntimeException saying
+"InvalidClassException".
+The process in depending on default serialVersionUIDare :
+1. After Serializing object if we change the .class file then we can't perform
+deserialization because of mismatch in serialVersionUID of local class and
+serialized object in this case at the time of Deserialization we will get
+RuntimeException saying in "InvalidClassException".
+2. Both sender and receiver should use the same version of JVM if there any
+incompatability in JVM versions then receive anable to deserializable because of
+different serialVersionUID , in this case receiver will get RuntimeException
+saying "InvalidClassException" .
+3. To generate serialVersionUID internally JVM will use complexAlgorithm which
+may create performence problems.
+We can solve above problems by configuring our own serialVersionUID .
+we can configure serialVersionUID as follows :
+private static final long serialVersionUID = 1L;
+Example :
+class Dog implements Serializable {
+private static final long serialVersionUID=1L;
+int i=10;
+int j=20;
+}
+class Sender {
+public static void main(String[] args) throws Exception {
+Dog d1=new Dog();
+FileOutputStreamfos=new FileOutputStream("abc.ser");
+ObjectOutputStreamoos= new ObjectOutputStream(fos);
+oos.writeObject(d1);
+}
+}
+class Receiver {
+public static void main(String[] args)throws Exception {
+FileInputStreamfis=new FileInputStream("abc.ser");
+ObjectInputStreamois=new ObjectInputStream(fis);
+Dog d2=(Dog) ois.readObject();
+System.out.println(d2.i+"-----"+d2.j);
+}
+}
+In the above program after serialization even though if we perform any change to
+Dog.classfile , we can deserialize object.
+We if configure our own serialVersionUID both sender and receiver not required to
+maintain the same JVM versions.
+Note : some IDE's generate explicit serialVersionUID.
+===============================================================================================
+Can a Serializable class contain a non-serializable field in Java? (answer)
+Ans:- Yes, but you need to make it either static or transient.
